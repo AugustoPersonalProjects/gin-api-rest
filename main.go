@@ -1,18 +1,14 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"github.com/AugustoPersonalProjects/gin-api-rest/models"
+	"github.com/AugustoPersonalProjects/gin-api-rest/routes"
 )
 
-func ExibeTodosAlunos(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"id":"1",
-		"nome":"Augusto Lopes",
-	})
-}
-
 func main() {
-	r := gin.Default()
-	r.GET("/alunos", ExibeTodosAlunos)
-	r.Run()
+	models.Alunos = []models.Aluno{
+		{Nome: "Augusto Lopes", CPF: "111.222.333-45", RG: "10.234.567-8"},
+		{Nome: "Franco Baresi", CPF: "120.340.450-68", RG: "20.345.678.9"},
+	}
+	routes.HandleRequests()
 }
